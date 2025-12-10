@@ -1,6 +1,7 @@
 # Check Cluster Operation:
 
 ### Whether [kube-apiserver] works: 
+**Without apiserver:**
 - Kubectl commands don't work.
 - Scheduler can't schedule pods.
 - Controllers can't update anything:
