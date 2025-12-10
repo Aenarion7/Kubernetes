@@ -1,3 +1,5 @@
+Perform this before labs from this folder - to setup test environment
+
 # Install kubectl Linux:
 The Kubernetes command-line tool, kubectl, allows you to run commands against Kubernetes clusters.
 
