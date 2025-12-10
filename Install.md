@@ -1,6 +1,7 @@
-https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
-
 # Install kubectl Linux:
+The Kubernetes command-line tool, kubectl, allows you to run commands against Kubernetes clusters.
+
+https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
 
 ### Download the latest release with the command:
 
@@ -16,3 +17,18 @@ https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
 ### Test to ensure the version you installed is up-to-date:
 
     kubectl version --client
+
+
+### Install Kind
+Kind allows to run Kubernetes on local a computer.
+Docker is required
+
+https://kind.sigs.k8s.io/docs/user/quick-start/
+
+    [ $(uname -m) = x86_64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.30.0/kind-linux-amd64
+
+### Veryfie instalation
+
+        kind version
+        kubectl
+        kubectl version --output=yaml
