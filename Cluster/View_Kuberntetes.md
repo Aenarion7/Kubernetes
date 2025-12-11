@@ -13,4 +13,8 @@
     Otherwise:
         
         The connection to the server 127.0.0.1:6443 was refused
-    d
+ 
+
+
+### Informacje o podach 
+        kubectl describe pod

@@ -1,4 +1,8 @@
-Step1: create 01-cluster.yaml
+# Description:
+
+In real life you will use deployments.
+
+create 01-cluster.yaml
 
 To stop all containers:
 
