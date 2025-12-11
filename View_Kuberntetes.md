@@ -18,6 +18,14 @@
 
 ### Informacje o podach 
     kubectl describe pod
+    kubectl get pod
+    kubectl ger pod pod-1
+    kubectl get pod --show-labels
+    kubectl get pod -l dept=dept-1
+    kubectl get pod -l dept!=dept-1
+    kubectl get pod -l dept=dept-1,team=team-a
+    kubectl get pod -o wide             - more info 
+Jeśli nie masz pliku yaml, np. ktoś inny stworzył Poda:
+    kubectl get pod pod-1 -o yaml
 
 ### Running containers
-    

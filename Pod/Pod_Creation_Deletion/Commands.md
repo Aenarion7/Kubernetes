@@ -25,3 +25,4 @@ go to location of pod.yaml
 
 # Delete pods:
     kubectl delete -f 01-simple-pod.yaml
+    kubectl delete pod/pod-3
