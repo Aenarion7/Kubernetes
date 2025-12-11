@@ -1,6 +1,6 @@
 # Description:
 
-In real life you will use deployments
+In real life you will use deployments.
 
 ### Base Resource Yaml format:
 Pod Format documentation:

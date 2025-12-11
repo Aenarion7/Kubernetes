@@ -17,4 +17,7 @@
 
 
 ### Informacje o podach 
-        kubectl describe pod
+    kubectl describe pod
+
+### Running containers
+    
