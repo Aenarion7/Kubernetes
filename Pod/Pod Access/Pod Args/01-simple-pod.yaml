@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+spec:
+  restartPolicy: Never
+  terminationGracePeriodSeconds: 1  #this will kill container after 1 second after receving kull sig.
+  containers:
+  - name: ubuntu
+    image: ubuntu
