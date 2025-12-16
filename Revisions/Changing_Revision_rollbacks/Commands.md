@@ -17,7 +17,7 @@ Druga strategia to Recreate: ubija stare Pody i dopiero tworzy nowe (brak “pł
 1. Create simple deployment
 2. Apply new revision
 
-Plik 01 oraz 02 umieszczone w osobnych plikach aby pokazać zmianę
+Plik 01, 02 oraz03 umieszczone w osobnych plikach aby pokazać zmianę
 # Prerequisite:
     kubectl get nodes
     kind create cluster --config 01-cluster.yaml
@@ -52,7 +52,9 @@ Uwaga: teraz kolejny rollout spowodowałby powrót do 3! Czyli wielokrotne undu 
     kubectl rollout undo deploy/order-service-deploy --to-revision=1
     kubectl rollout history deploy
 
+# Checking Rollout Changes details
 
+    kubectl rollout history deploy --revision=3
 
 
 
