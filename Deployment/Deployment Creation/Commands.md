@@ -1,11 +1,10 @@
 # Description:
 
-In real life you will use deployments.
+Create simple deployment
 
-### Base Resource Yaml format:
-Pod Format documentation:
+kubectl create nie jest idempotentne, czyli nie jest świadome obecności już istniejących obiektów. Zwróci błąd, jeśli obiekt, który chcemy utworzyć, już istnieje.
 
-    https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/
+kubectl apply jest idempotentne — utworzy obiekty, które jeszcze nie istnieją, a jeśli już istnieją, to zaktualizuje je tylko wtedy, gdy manifest YAML różni się od stanu w klastrze. Jeśli nie ma różnic, nic nie zmieni. Można powiedzieć, że apply “nakłada” zmiany (różnice) na istniejące zasoby. zostanie on utworzony, więc można powiedzieć że tworzy się różnica.
 
 # Prerequisite:
     kubectl get nodes
@@ -14,15 +13,11 @@ Pod Format documentation:
 
 CLuster is created
 
-# Pod creation:
+# deployment start:
 
-    kubectl get pod
+    kubectl create -f 01-simple-deployment.yaml
+    Lub
+    lubectl apply -f 01-simple-deployment.yaml
+   
 
-go to location of pod.yaml
 
-    kubectl create -f 01-simple-pod.yaml
-    kubectl get pod
-
-# Delete pods:
-    kubectl delete -f 01-simple-pod.yaml
-    kubectl delete pod/pod-3

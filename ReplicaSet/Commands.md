@@ -2,11 +2,6 @@
 
 In real life you will use deployments.
 
-### Base Resource Yaml format:
-Pod Format documentation:
-
-    https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/
-
 # Prerequisite:
     kubectl get nodes
     kind create cluster --config 01-cluster.yaml
@@ -14,15 +9,15 @@ Pod Format documentation:
 
 CLuster is created
 
-# Pod creation:
+# Replica Set start:
 
     kubectl get pod
 
 go to location of pod.yaml
 
-    kubectl create -f 01-simple-pod.yaml
-    kubectl get pod
+    kubectl apply -f simple-rs.yaml
 
-# Delete pods:
-    kubectl delete -f 01-simple-pod.yaml
-    kubectl delete pod/pod-3
+    kubectl get rs
+
+    kubectl get pods -l app=my-app
+

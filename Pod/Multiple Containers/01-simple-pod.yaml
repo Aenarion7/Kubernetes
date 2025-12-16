@@ -3,6 +3,12 @@ kind: Pod
 metadata:
   name: my-pod
 spec:
+  terminationGracePeriodSeconds: 1
   containers:
-  - name: nginx
+  - name: nginx-1
     image: nginx
+  - name: util
+    image: vinsdocker/util
+    args:
+    - "sleep"  # That’s because the container would finish its work, exit, and then restart
+    - "3600"

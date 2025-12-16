@@ -16,9 +16,9 @@
  
 
 
-### Informacje o podach 
-    kubectl describe pod
-    kubectl get pod
+### Informacje o kind: pod/ReplicaSet/Deployment/StatefulSet/DaemonSet/Job/CronJob/Node/Namespace itd.
+    kubectl describe kind
+    kubectl get kind
     kubectl ger pod pod-1
     kubectl get pod --show-labels
     kubectl get pod -l dept=dept-1
@@ -28,4 +28,25 @@
 Jeśli nie masz pliku yaml, np. ktoś inny stworzył Poda:
     kubectl get pod pod-1 -o yaml
 
-### Running containers
+### Logs
+
+Logi z Poda:
+
+    kubectl logs <pod-name>
+
+Z konkretnym namespace:
+
+    kubectl logs -n <namespace> <pod-name>
+
+Logi z wybranego kontenera:
+
+    kubectl logs <pod-name> -c <container-name>
+
+Podgląd na żywo:
+
+    kubectl logs -f <pod-name>
+
+Zakres czasu:
+
+    kubectl logs <pod-name> --since=10m
+    kubectl logs <pod-name> --since-time=2025-12-16T10:00:00Z
