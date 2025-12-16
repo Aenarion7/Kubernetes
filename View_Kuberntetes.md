@@ -14,7 +14,9 @@
         
         The connection to the server 127.0.0.1:6443 was refused
  
+### Connection to a pod/deployment
 
+    kubectl exec -it deploy/my-deploy -- bash
 
 ### Informacje o kind: pod/ReplicaSet/Deployment/StatefulSet/DaemonSet/Job/CronJob/Node/Namespace itd.
     kubectl describe kind

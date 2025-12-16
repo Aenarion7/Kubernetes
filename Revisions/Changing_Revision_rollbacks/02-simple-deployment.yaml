@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: 01-service
+  annotations:
+    kubernetes-io/change-cause: "deploying v2" # Aby widzieć jaka wersja była ładowana
+spec:
+  selector:
+    matchLabels:
+      app: 01-service
+    replicas:: 3
+    template:
+      metadata:
+        labels: 
+          app: 01-service
+      spec:
+        containers:
+          - name: 01-service
+            image: vinsdocker/k8s-app:v2
+            ports:
+            - name: "app-port"
+              containerPort: 80
