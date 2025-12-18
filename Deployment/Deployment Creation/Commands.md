@@ -17,7 +17,7 @@ CLuster is created
 
     kubectl create -f 01-simple-deployment.yaml
     Lub
-    lubectl apply -f 01-simple-deployment.yaml
+    kubectl apply -f 01-simple-deployment.yaml
    
 
 
