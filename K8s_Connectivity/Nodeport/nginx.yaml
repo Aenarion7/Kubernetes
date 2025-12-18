@@ -28,6 +28,17 @@ spec:
     app: nginx
   ports:
     - name: http
-      port: 80        # port Service (wewnątrz klastra)
-      targetPort: 80  # port w Podzie
+      port: 80        # to jest port, pod którym ten Service jest widoczny wewnątrz klastra (ClusterIP + DNS).
+      #Przykład: inne Pody mogą wejść na:
+      #http://nginx:80 (albo po prostu http://nginx)
+      #Czyli: Service “słucha” na porcie 80 w swojej wirtualnej usłudze.
+      targetPort: 80  # port w Podzie - To mówi, na jaki port w backendach (Podach wybranych przez selector) Kubernetes ma wysłać ruch
+      # Jeśli nginx w kontenerze nasłuchuje na 80, to targetPort: 80 jest poprawne.
+      # Uwaga: targetPort może być też nazwą portu z kontenera (np. targetPort: http) — wtedy Service szuka portu o takiej nazwie w definicji kontenera.
       nodePort: 30001 # port "na nodzie" (zgodny z extraPortMappings)
+      # To wystawia ten Service dodatkowo na porcie 30001 na każdym nodzie klastra.
+      # Czyli poza dostępem wewnątrz klastra (nginx:80), masz też:
+      # - http://<IP_NODE>:30001 (z sieci, jeśli routowanie/firewall pozwala)
+      # Jak to się składa w całość
+      # - ruch na nginx:80 → idzie do Podów na :80
+      # - ruch na <IP_NODE>:30001 → też idzie do tego samego Service, a potem do Podów na :80
