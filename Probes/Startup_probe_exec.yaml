@@ -1,0 +1,28 @@
+# Prefer httpGet / TcpSocket - Exec is good for scenarios where there is no web and no ports exposed.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-with-startup-probe
+spec:
+  containers:
+    - name: nginx
+      image: nginx:1.25-alpine
+      ports:
+        - containerPort: 80
+      startupProbe:
+        exec:
+          command:
+          - "cat"
+          - "/usr/share/nginx/html/index.html"
+        periodSeconds: 5 # częstotliwość
+        failureThreshold: 12  # 12 * 5s = max ~60s na start zanim uzna za failure
+
+# implementaion in real world would be better to be a part of a separate script under docker image
+
+# create a separate healthcheck
+# /bin/healthcheck
+
+        exec:
+          command:
+          - "cat"
+          - "/usr/share/nginx/html/index.html"

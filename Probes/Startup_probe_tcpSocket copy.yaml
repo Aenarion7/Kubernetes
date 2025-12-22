@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-with-startup-probe
+spec:
+  containers:
+    - name: mongo
+      image: mongo
+      ports:
+        - containerPort: 80
+      startupProbe:
+        tcpSocket:
+          port: 27017
+        periodSeconds: 5 # częstotliwość
+        failureThreshold: 12  # 12 * 5s = max ~60s na start zanim uzna za failure

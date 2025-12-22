@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-with-startup-probe
+spec:
+  containers:
+    - name: app
+      image: nginx:1.25-alpine
+      ports:
+        - containerPort: 80
+      startupProbe:
+        httpGet:
+          path: /  # w httpGet mówi jaki URL (ścieżkę HTTP) ma wywołać probe. Czyli kubelet sprawdzi np. http://<pod-ip>:<port>/
+          port: 80
+        periodSeconds: 5 # częstotliwość
+        failureThreshold: 12  # 12 * 5s = max ~60s na start zanim uzna za failure
+        initialDelaySeconds: 10 # opóźnienie po starcie kontenera
+        timeoutSeconds: # jak długo czekamy na odpowiedź nim uznamy za błąd
+        successThreshold: 1 # ile musi być poprawnych odpowiedzi nim uznamy że jest ok
