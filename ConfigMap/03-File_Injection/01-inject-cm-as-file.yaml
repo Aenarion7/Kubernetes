@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-properties
+data:  # Tutaj informujemy jaki plik chcemy załadować
+  application.properties: | # tutaj wpisujemy ciąg do injectowania, czyli od pipe
+    appUrl=http://my-app-service
+    timeout=30  # bierzemy wszystkie wartości z tej sekcji i ładujemy je w configMapKeyRef poniżej.
+    a.b.c.d-something
+    username=vinoth
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+spec:
+  terminationGracePeriodSeconds: 1
+  restartPolicy: Never
+  containers:
+  - name: ubuntu
+    image: ubuntu
+    volumeMounts: # tutaj mountujemy stworzony poniżej volume.
+    - name: config-volume1 # zobacz że mozemy wybrać volume
+      mountPath: /usr/share/props # gdzie ma być zamontowany
+    args:
+    - sleep
+    - "3600"
+  volumes:
+  - name: config-volumes1
+    configMap:
+      name: app-properties
+  - name: config-volumes2
+    configMap:
+      name: app-properties
+ 
