@@ -7,7 +7,6 @@ spec:
   - name: nginx
     image: nginx
 
-
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
@@ -16,11 +15,13 @@ metadata:
     app: my-app
 spec:
   replicas: 3
+  selector:
+    matchLabels:
+      app: my-app
   template:
     metadata:
-    name: my-pod
-    labels:
-      app: my-app
+      labels:
+        app: my-app
     spec:
       containers:
         - name: nginx
